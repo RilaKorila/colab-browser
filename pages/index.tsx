@@ -1,10 +1,8 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import { Container, Footer, Main } from '../components/Layout'
 import styled from 'styled-components'
 import { client } from "../libs/client";
-import Link from "next/link";
 
 
 const Title = styled.h1`
@@ -27,6 +25,7 @@ const Card = styled.a`
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   width: 45%;
+  height: 80px;
 
   &:hover{
     color: #0070f3;
@@ -51,7 +50,7 @@ const Grid = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   max-width: 800px;
-  margin-top: 3rem;
+  margin: 10px auto;
 
   @media (max-width: 600px) {
     width: 100%;
@@ -59,6 +58,18 @@ const Grid = styled.div`
   }
 `;
 
+type Colab = {
+  id?: string,
+  createdAt: string,
+  updatedAt?: string,
+  publishedAt?: string,
+  revisedAt?: string,
+  name: string,
+  url: string,
+  skill: string[],
+  editor?: string
+  youtubeURL?: string 
+}
 
 
 
@@ -73,62 +84,31 @@ const Home: NextPage = ({colab}: InferGetStaticPropsType<typeof getStaticProps>)
 
       <Main>
         <Title>
-          Let&apos;s Enjoy <span>Computer Science</span>!
+          Let&apos;s Enjoy Computer Science !
         </Title>
 
         <Grid>
-          <Card href="https://nextjs.org/docs">
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </Card>
-
-          <Card href="https://nextjs.org/learn">
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </Card>
-
-          <Card
-            href="https://github.com/vercel/next.js/tree/master/examples"
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </Card>
-
-          <Card
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </Card>
-
-          <Card
-            href={colab[0].url}
-          >
-            <h2>{colab[0].name}</h2>
-            <p>
-              乱数を使ってオリジナル占いを作成しよう！
-            </p>
-          </Card>
+          {colab.map((colab: Colab) => (
+              <Card
+              href={colab.url} key={colab.id}
+            >
+              <h2>{colab.name}</h2>
+            </Card>
+          ))}
         </Grid>
-
-        <div>
-          <p>{colab[0].name}</p>
-      {/* <ul>
-        {colab.map((colab: Colab) => (
-          <li key={colab.id}>
-            <Link href={`/blog/${colab.id}`}>
-              <a>{colab.name}</a>
-            </Link>
-          </li>
-        ))}
-      </ul> */}
-    </div>
+        {/* 
+        next.js ページへのリンク
+        <Link href={`/blog/${colab.id}`}>
+                    <a>{colab.name}</a>
+                  </Link><Link href={`/blog/${colab.id}`}>
+                    <a>{colab.name}</a>
+                  </Link>
+        */}
       </Main>
 
       <Footer>
-      <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+        <p>Let&apos;s Enjoy Programming !!</p>
+      {/* <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} /> */}
       </Footer>
     </Container>
   )
