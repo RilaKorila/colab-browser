@@ -43,3 +43,6 @@ next.config.js
 
 # libs
 /libs/
+
+# babel
+babel.config.json
