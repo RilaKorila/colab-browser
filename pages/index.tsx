@@ -1,8 +1,10 @@
-import type { NextPage } from 'next'
+import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import { Container, Footer, Main } from '../components/Layout'
 import styled from 'styled-components'
+import { client } from "../libs/client";
+import Link from "next/link";
 
 
 const Title = styled.h1`
@@ -59,7 +61,8 @@ const Grid = styled.div`
 
 
 
-const Home: NextPage = () => {
+
+const Home: NextPage = ({colab}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Container>
       <Head>
@@ -99,7 +102,29 @@ const Home: NextPage = () => {
               Instantly deploy your Next.js site to a public URL with Vercel.
             </p>
           </Card>
+
+          <Card
+            href={colab[0].url}
+          >
+            <h2>{colab[0].name}</h2>
+            <p>
+              乱数を使ってオリジナル占いを作成しよう！
+            </p>
+          </Card>
         </Grid>
+
+        <div>
+          <p>{colab[0].name}</p>
+      {/* <ul>
+        {colab.map((colab: Colab) => (
+          <li key={colab.id}>
+            <Link href={`/blog/${colab.id}`}>
+              <a>{colab.name}</a>
+            </Link>
+          </li>
+        ))}
+      </ul> */}
+    </div>
       </Main>
 
       <Footer>
@@ -108,5 +133,19 @@ const Home: NextPage = () => {
     </Container>
   )
 }
+
+
+// データをテンプレートに受け渡す部分の処理を記述
+export const getStaticProps: GetStaticProps = async () => {
+  const data = await client.get({ endpoint: "colab-url" });
+
+  return {
+    props: {
+      colab: data.contents,
+    },
+  };
+};
+
+
 
 export default Home
