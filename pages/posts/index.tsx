@@ -1,6 +1,6 @@
 import { GetStaticProps } from "next";
 import Link from "next/link";
-import { Footer, Container } from '../../components/Layout'
+import { Footer, Container, H2, MyHeader } from '../../components/Layout'
 import { Colab } from "../../interface";
 import CardGrid from "../../components/CardGrid";
 
@@ -27,9 +27,9 @@ export const sampleColabData: Colab[] = [
 const WithStaticProps = ({items}: Props) => {
     return(
         <>
-        <h2>Colab List</h2>
+        <MyHeader/>
         <Container>
-        <h2>気になるテーマからはじめてみよう！</h2>
+        <H2>気になるテーマからはじめてみよう！</H2>
             <CardGrid  items={items} />
         </Container>
         {console.log(items)}

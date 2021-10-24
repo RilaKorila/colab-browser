@@ -1,7 +1,8 @@
-import { Container } from "../../components/Layout";
+import { Container, MyHeader } from "../../components/Layout";
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { Colab } from "../../interface";
 import Link from "next/link"
+
 
 type Props = {
     item?: Colab,
@@ -39,6 +40,7 @@ const StaticPropsDetail = ({item, errors}: Props) => {
         const url = item === undefined? "error" : item.url
         return(
             <>
+            <MyHeader/>
             <h1>{item?.name}</h1>
             <Link href={url}>
                 <a>サイトにジャンプ</a>

@@ -1,12 +1,13 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import { Footer, Container } from '../components/Layout'
+import Link from 'next/link'
+import { Footer, Container, H2 } from '../components/Layout'
 import styled from 'styled-components'
 import { client } from "../libs/client";
 import { Colab } from '../interface'
 
-
+// (TODO) Layoutを呼び出す + position, ul>li>>color のみ変更
 const StyledHeader = styled.div`
   top: 0;
   right: 0;
@@ -98,9 +99,9 @@ const Home: NextPage = ({colab}: InferGetStaticPropsType<typeof getStaticProps>)
       <Image alt="Picture of starry sky" src="/starry_sky.jpg" layout="fill" />
       <StyledHeader>
         <ul>
-          <li>Home</li>
+          <li><Link href="/">Home</Link></li>
           <li>Search</li>
-          <li>Library</li>
+          <li><Link href="/posts/">Library</Link></li>
           <li>Help</li>
         </ul>
       </StyledHeader>
@@ -110,7 +111,7 @@ const Home: NextPage = ({colab}: InferGetStaticPropsType<typeof getStaticProps>)
     </Top>
 
     <Container>
-      <h2>気になるテーマからはじめてみよう！</h2>
+      <H2>気になるテーマからはじめてみよう！</H2>
     <Grid>
       {colab.map((colab: Colab) => (
         <Card
