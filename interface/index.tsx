@@ -9,4 +9,4 @@ export type Colab = {
     skill: string[],
     editor?: string
     youtubeURL?: string 
-  }
+}

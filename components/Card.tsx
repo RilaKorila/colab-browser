@@ -34,14 +34,18 @@ const StyledLink = styled.div`
     }
 `
 const Card = ({data}: Props) => {
+    // (TODO) Cardの高さを調整
+    // 分岐・反復を学習した後に、挑戦してみてください！　といれる
+    // const sklls = data.skill.map((item) => ())
     return(
         <StyledLink>
             <h2>{data.name}</h2>
-            <Link href="users/[id]" as={`users/${data.id}`}>
+            <Link href={`posts/${data.id}`}>
                 <a>
-                    {data.id}: {data.name}
+                    これは、{data.name}のプログラムです。
                 </a>
             </Link>
+            {/* <p>「」を学習した後に、挑戦してみてください！</p> */}
         </StyledLink>
     )
 }
