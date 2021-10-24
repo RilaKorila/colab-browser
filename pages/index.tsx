@@ -101,7 +101,7 @@ const Home: NextPage = ({colab}: InferGetStaticPropsType<typeof getStaticProps>)
         <ul>
           <li><Link href="/">Home</Link></li>
           <li>Search</li>
-          <li><Link href="/posts/">Library</Link></li>
+          <li><Link href="">Library</Link></li>
           <li>Help</li>
         </ul>
       </StyledHeader>
