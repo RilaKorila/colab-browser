@@ -1,9 +1,10 @@
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import { Footer } from '../components/Layout'
+import { Footer, Container } from '../components/Layout'
 import styled from 'styled-components'
 import { client } from "../libs/client";
+import { Colab } from '../interface'
 
 
 const StyledHeader = styled.div`
@@ -25,15 +26,6 @@ const StyledHeader = styled.div`
       opacity: 0.7;
       padding:10px 30px;
     }
-  }
-`;
-
-const Container = styled.div`
-  text-align: center;
-  color: #333;
-  
-  >h2{
-    font-size: 2.0rm;
   }
 `;
 
@@ -93,19 +85,6 @@ const Grid = styled.div`
   }
 `;
 
-type Colab = {
-  id?: string,
-  createdAt: string,
-  updatedAt?: string,
-  publishedAt?: string,
-  revisedAt?: string,
-  name: string,
-  url: string,
-  skill: string[],
-  editor?: string
-  youtubeURL?: string 
-}
-
 
 const Home: NextPage = ({colab}: InferGetStaticPropsType<typeof getStaticProps>) => (
   <>
@@ -129,7 +108,6 @@ const Home: NextPage = ({colab}: InferGetStaticPropsType<typeof getStaticProps>)
         Let&apos;s Enjoy Computer Science !
       </h1>
     </Top>
-
 
     <Container>
       <h2>気になるテーマからはじめてみよう！</h2>
