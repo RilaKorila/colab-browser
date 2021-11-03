@@ -12,6 +12,7 @@ const WithStaticProps = ({items}: Props) => {
     return(
         <>
         <MyHeader/>
+
         <Container>
             <H2>気になるテーマからはじめてみよう！</H2>
             <CardGrid  items={items} />
