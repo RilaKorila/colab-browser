@@ -5,7 +5,8 @@ import Link from 'next/link'
 import { Footer, Container, H2 } from '../components/Layout'
 import styled from 'styled-components'
 import { client } from "../libs/client";
-import { Colab } from '../interface'
+import CardGrid from '../components/CardGrid'
+import React from 'react'
 
 // (TODO) Layoutを呼び出す + position, ul>li>>color のみ変更
 const StyledHeader = styled.div`
@@ -45,48 +46,6 @@ const Top = styled.div`
   }
 `;
 
-const Card = styled.a`
-  display: inline-block;
-  margin: 20px 10px;
-  padding: 10px;
-  text-align: left;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  width: 45%;
-  height: 80px;
-
-  &:hover{
-    color: #0070f3;
-    border-color: #0070f3;
-  }
-
-  >h2{
-    margin: 0 0 1rem 0;
-    font-size: 2.0rem;
-  }
-
-  >p{
-    margin: 0;
-    font-size: 1.3rem;
-  }
-`;
-
-const Grid = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
-  margin: 10px auto;
-
-  @media (max-width: 600px) {
-    width: 100%;
-    flex-direction: column;
-  }
-`;
-
-
 const Home: NextPage = ({colab}: InferGetStaticPropsType<typeof getStaticProps>) => (
   <>
     <Head>
@@ -100,8 +59,8 @@ const Home: NextPage = ({colab}: InferGetStaticPropsType<typeof getStaticProps>)
       <StyledHeader>
         <ul>
           <li><Link href="/">Home</Link></li>
-          <li>Search</li>
-          <li><Link href="">Library</Link></li>
+          {/* <li>Search</li> */}
+          <li><Link href="/posts/">Library</Link></li>
           <li>Help</li>
         </ul>
       </StyledHeader>
@@ -110,31 +69,24 @@ const Home: NextPage = ({colab}: InferGetStaticPropsType<typeof getStaticProps>)
       </h1>
     </Top>
 
-    <Container>
-      <H2>気になるテーマからはじめてみよう！</H2>
-    <Grid>
-      {colab.map((colab: Colab) => (
-        <Card
-          href={colab.url} key={colab.id}
-        >
-          <h2>{colab.name}</h2>
-        </Card>
-      ))}
-    </Grid>
-    </Container>
-    {/*
-        next.js ページへのリンク
-        <Link href={`/blog/${colab.id}`}>
-                    <a>{colab.name}</a>
-                  </Link><Link href={`/blog/${colab.id}`}>
-                    <a>{colab.name}</a>
-                  </Link>
-        */}
 
-    <Footer>
+
+    <Container>
+            <H2>気になるテーマからはじめてみよう！</H2>
+            <p>Google Colaboratoryを使ってPythonの練習をしましょう！<br/>
+            <br/>
+            Pythonを習ったばかりで、お手軽な問題に挑戦したい方。<br/>
+            学校の授業でPythonの演習をしたい先生。<br/>
+            <br/>
+            お好きな問題をぜひ自分のGoogle Colaboratoryで動かしてみましょう！</p>
+
+            <H2>最近追加したテーマ</H2>
+            <CardGrid  items={colab} />
+    </Container>
+
+    {/* <Footer>
       <p>Let&apos;s Enjoy Programming !!</p>
-      {/* <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} /> */}
-    </Footer>
+    </Footer> */}
   </>
 )
 

@@ -6,21 +6,21 @@ type Props = {
     data: Colab
 }
 
-const StyledLink = styled.div`
-    display: inline-block;
-    margin: 20px 10px;
-    padding: 10px;
-    text-align: left;
-    border: 1px solid #eaeaea;
-    border-radius: 10px;
-    transition: color 0.15s ease, border-color 0.15s ease;
-    width: 45%;
-    height: 80px;
+const StyledLink = styled.a`
+display: inline-block;    
+margin: 20px 10px;
+padding: 10px;
+text-align: left;
+border: 1px solid #eaeaea;
+border-radius: 10px;
+transition: color 0.15s ease, border-color 0.15s ease;
+width: 45%;
+height: 100px;
 
     &:hover{
         cursor: pointer;
-        color: #0070f3;
-        border-color: #0070f3;
+        color: #b88884;
+        border-color: #b88884;
     }
 
     >h2{
@@ -34,18 +34,13 @@ const StyledLink = styled.div`
     }
 `
 const Card = ({data}: Props) => {
-    // (TODO) Cardの高さを調整
-    // 分岐・反復を学習した後に、挑戦してみてください！　といれる
+    // (TODO)分岐・反復を学習した後に、挑戦してみてください！　といれる
     // const sklls = data.skill.map((item) => ())
     return(
-        <StyledLink>
+        <StyledLink href={`/posts/${data.id}`}>
             <h2>{data.name}</h2>
-            <Link href={`posts/${data.id}`}>
-                <a>
-                    これは、{data.name}のプログラムです。
-                </a>
-            </Link>
-            {/* <p>「」を学習した後に、挑戦してみてください！</p> */}
+            <p>これは、{data.name}のプログラムです。</p>
+            <p>分岐・反復を学習した後に、挑戦してみてください！</p>
         </StyledLink>
     )
 }

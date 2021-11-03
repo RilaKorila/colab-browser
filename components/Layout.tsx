@@ -5,6 +5,7 @@ export const Footer = styled.footer`
     width: 100%;
     height: 100px;
     border-top: 1px solid #eaeaea;
+    font-size: 1.5em
 `;
 
 export const Container = styled.div`
@@ -12,7 +13,11 @@ text-align: center;
 color: #333;
 
 >h2{
-    font-size: 2.0rm;
+    margin-top: 100px;
+}
+
+>p{
+    font-size: 2.4em;
 }
 `;
 
@@ -23,7 +28,7 @@ export const H1 = styled.h1`
 `;
 
 export const H2 = styled.h2`
-    font-size: 3.5em;
+    font-size: 4.0em;
     letter-spacing: 2px;
     color: #444;
 `;
@@ -63,7 +68,7 @@ export const MyHeader = () => {
         <StyledMyHeader>
             <ul>
                 <li><Link href="/">Home</Link></li>
-                <li>Search</li>
+                {/* <li>Search</li> */}
                 <li><Link href="/posts/">Library</Link></li>
                 <li>Help</li>
             </ul>
