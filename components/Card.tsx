@@ -34,8 +34,7 @@ height: 100px;
     }
 `
 const Card = ({data}: Props) => {
-    // (TODO) Cardの高さを調整
-    // 分岐・反復を学習した後に、挑戦してみてください！　といれる
+    // (TODO)分岐・反復を学習した後に、挑戦してみてください！　といれる
     // const sklls = data.skill.map((item) => ())
     return(
         <StyledLink href={`/posts/${data.id}`}>
