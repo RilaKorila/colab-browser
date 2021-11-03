@@ -1,4 +1,4 @@
-import { Container, MyHeader } from "../../components/Layout";
+import { Container, MyHeader, H1 } from "../../components/Layout";
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { Colab } from "../../interface";
 import Link from "next/link"
@@ -35,7 +35,7 @@ const StaticPropsDetail = ({item, errors}: Props) => {
             <>
             <MyHeader/>
             <Contents>
-                <h1>{item?.name}</h1>
+                <H1>{item?.name}</H1>
                 <Link href={url}>
                     <a>サイトにジャンプ</a>
                 </Link>

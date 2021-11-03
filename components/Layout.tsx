@@ -63,7 +63,7 @@ export const MyHeader = () => {
         <StyledMyHeader>
             <ul>
                 <li><Link href="/">Home</Link></li>
-                <li>Search</li>
+                {/* <li>Search</li> */}
                 <li><Link href="/posts/">Library</Link></li>
                 <li>Help</li>
             </ul>

@@ -1,5 +1,4 @@
 import { GetStaticProps } from "next";
-import Link from "next/link";
 import { Footer, Container, H2, MyHeader } from '../../components/Layout'
 import { Colab } from "../../interface";
 import CardGrid from "../../components/CardGrid";
@@ -14,7 +13,7 @@ const WithStaticProps = ({items}: Props) => {
         <>
         <MyHeader/>
         <Container>
-        <H2>気になるテーマからはじめてみよう！</H2>
+            <H2>気になるテーマからはじめてみよう！</H2>
             <CardGrid  items={items} />
         </Container>
         </>
