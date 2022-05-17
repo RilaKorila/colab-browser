@@ -88,7 +88,6 @@ function Home(allColab: {allColab: Colab[]}){
             学校の授業でPythonの演習をしたい先生。<br/>
             <br/>
             お好きな問題をぜひ自分のGoogle Colaboratoryで動かしてみましょう！</p>
-            {console.log(allColab.allColab)}
             <H2>最新のテーマ</H2>
             <CardGrid  items={[new_colab]} />
     </Container>

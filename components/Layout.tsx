@@ -34,25 +34,25 @@ export const H2 = styled.h2`
 `;
 
 const StyledMyHeader = styled.div`
-  top: 0;
-  right: 0;
-  text-align: center;
-  background-color: transparent;
-  position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    background-color: transparent;
+    position: absolute;
 
-  >ul{
-    display:flex;
-    justify-content: flex-end;
-    align-items: center;
-    
-    >li{
-      list-style: none;
-      font-size: 16px;
-      color: white;
-      opacity: 0.7;
-      padding:10px 30px;
+    >ul{
+        display:flex;
+        justify-content: flex-end;
+        align-items: center;
+        
+        >li{
+        list-style: none;
+        font-size: 16px;
+        color: white;
+        opacity: 0.7;
+        padding:10px 30px;
+        }
     }
-  }
 `;
 
 const BaseHeader = styled.div`
