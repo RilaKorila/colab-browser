@@ -28,8 +28,6 @@ const Contents = styled.div`
         border-radius: 5px;
         margin-top: 30px;
     }
-
-    
 `;
 
 const Discription = styled.div`
