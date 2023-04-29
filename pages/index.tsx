@@ -72,7 +72,7 @@ function Home(allColab: {allColab: Colab[]}){
           <li><Link href="/">Home</Link></li>
           {/* <li>Search</li> */}
           <li><Link href="/posts/">Library</Link></li>
-          <li>Help</li>
+          <li><Link href="/help/">Help</Link></li>
         </ul>
       </StyledHeader>
       <h1>
