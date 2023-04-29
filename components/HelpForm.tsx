@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import { z } from "zod";
 
@@ -34,67 +35,78 @@ const StyledInput = styled.input`
   resize: none;
 `;
 
-const StyledButton = styled.input`
+const StyledButton = styled.button`
   display: block;
   margin-top: 20px;
   width: 100px;
 `;
 
-const HelpForm = () => {
+const HelpForm: React.FC = () => {
+  // extract the inferred type
+  type User = z.infer<typeof User>;
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    console.log(event.target);
+    console.log("----------------");
+    // const usernameInput = document.querySelector(
+    //   "#username"
+    // ) as HTMLInputElement;
+    // const emailInput = document.querySelector("#email") as HTMLInputElement;
+    // console.log(usernameInput.value);
+    // console.log(emailInput.value);
+    // ↓ここを変える
+    const data: User = {
+      username: "aaaa", // usernameInput.value,
+      email: "aaaa@gmail.com",
+    };
+
+    try {
+      User.parse(data);
+    } catch {
+      console.error("validation failed");
+    }
+
+    const config = {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+
+    const res = await fetch("api/hello", config);
+    console.log("result: ", res);
+  };
+
   return (
     <>
-      {/* <StyledHelpForm> */}
-      <StyledHelpForm action="submit">
-        <label htmlFor="help-form__username">
+      <StyledHelpForm onSubmit={handleSubmit}>
+        <label htmlFor="username">
           <p>名前</p>
-          <StyledInput type="text" id="help-form__username" required />
+          <StyledInput type="text" id="username" name="username" required />
         </label>
-        <label htmlFor="help-form__email">
+        <label htmlFor="email">
           <p>e-mail</p>
-          <StyledInput type="text" id="help-form__email" required />
+          <StyledInput type="text" id="email" name="email" required />
         </label>
-        <label htmlFor="help-form__content">
+        <label htmlFor="content">
           <p>内容</p>
           <StyledTextarea
-            id={"help-form__content"}
+            id="content"
+            name="content"
             rows={8}
             cols={50}
             required
           ></StyledTextarea>
         </label>
-        <StyledButton
-          type="submit"
-          className="help-form__button"
-          name="送信"
-          onSubmit={handleSubmit}
-        />
+        <StyledButton type="submit" name="SubmitBtn">
+          送信
+        </StyledButton>
       </StyledHelpForm>
     </>
   );
-};
-
-// extract the inferred type
-type User = z.infer<typeof User>;
-
-const handleSubmit = () => {
-  // event.prevent()
-  const usernameInput = document.getElementById(
-    "help-form__username"
-  ) as HTMLInputElement;
-  const emailInput = document.getElementById(
-    "help-form__email"
-  ) as HTMLInputElement;
-  console.log(usernameInput.value);
-  console.log(emailInput.value);
-
-  try {
-    User.parse({
-      username: usernameInput.value,
-      email: emailInput.value,
-    });
-  } catch {
-    console.error("validation failed");
-  }
 };
 
 export default HelpForm;
