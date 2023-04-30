@@ -41,48 +41,14 @@ const StyledButton = styled.button`
   width: 100px;
 `;
 
-const HelpForm: React.FC = () => {
-  // extract the inferred type
-  type User = z.infer<typeof User>;
+type Props = {
+  submitHandler: (event: React.FormEvent<HTMLFormElement>) => void;
+};
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    console.log(event.target);
-    console.log("----------------");
-    // const usernameInput = document.querySelector(
-    //   "#username"
-    // ) as HTMLInputElement;
-    // const emailInput = document.querySelector("#email") as HTMLInputElement;
-    // console.log(usernameInput.value);
-    // console.log(emailInput.value);
-    // ↓ここを変える
-    const data: User = {
-      username: "aaaa", // usernameInput.value,
-      email: "aaaa@gmail.com",
-    };
-
-    try {
-      User.parse(data);
-    } catch {
-      console.error("validation failed");
-    }
-
-    const config = {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    };
-
-    const res = await fetch("api/hello", config);
-    console.log("result: ", res);
-  };
-
+const HelpForm: React.FC<Props> = ({ submitHandler }) => {
   return (
     <>
-      <StyledHelpForm onSubmit={handleSubmit}>
+      <StyledHelpForm onSubmit={submitHandler} method="post">
         <label htmlFor="username">
           <p>名前</p>
           <StyledInput type="text" id="username" name="username" required />
