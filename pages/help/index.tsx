@@ -1,20 +1,14 @@
-import { GetStaticProps } from "next";
-import { Footer, Container, H2, MyHeader } from "../../components/Layout";
-import { Colab } from "../../interface";
+import { Container, H2, MyHeader } from "../../components/Layout";
 import HelpForm from "../../components/HelpForm";
-import { client } from "../..//libs/client";
 import { z } from "zod";
 
-type Props = {
-  items: Colab[];
-};
 // creating a schema for strings
 const User = z.object({
   username: z.string(),
   email: z.string().email(),
 });
 
-const WithStaticProps = ({ items }: Props) => {
+const HelpPage = () => {
   // extract the inferred type
   type User = z.infer<typeof User>;
 
@@ -22,7 +16,7 @@ const WithStaticProps = ({ items }: Props) => {
     event.preventDefault();
 
     console.log(event.target);
-    const formData = new FormData(event.target);
+    // const formData = new FormData(event.target);
     // ↓ここを変える
     const data: User = {
       username: "aaaa", // usernameInput.value,
@@ -58,13 +52,4 @@ const WithStaticProps = ({ items }: Props) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async () => {
-  const data = await client.get({ endpoint: "colab-url" });
-  const items: Colab[] = data.contents;
-
-  return {
-    props: { items },
-  };
-};
-
-export default WithStaticProps;
+export default HelpPage;
