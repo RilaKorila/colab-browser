@@ -1,6 +1,6 @@
-import Card from "./Card";
-import { Colab } from "../../interface";
 import styled from "styled-components";
+import { Colab } from "../../interface";
+import Card from "./Card";
 
 type Props = {
   items: Colab[];

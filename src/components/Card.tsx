@@ -1,6 +1,5 @@
-import { Colab } from "../../interface";
-import Link from "next/link";
 import styled from "styled-components";
+import { Colab } from "../../interface";
 
 type Props = {
   data: Colab;
