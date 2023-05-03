@@ -1,13 +1,9 @@
-import { Container, H2, MyHeader } from "../../components/Layout";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
-import { Result } from "../../types";
-import {
-  handleFetchReject,
-  handleFetchResolve,
-} from "../../src/services/client/apiRoutes";
+import { Container, H2, MyHeader } from "../../components/Layout";
+import postHelpForm from "../../src/services/client/postHelpForm";
 import FormErrorMessage from "../../components/FormErrorMessage";
 
 const StyledHelpForm = styled.form`
@@ -46,25 +42,6 @@ const helpFormSchema = z.object({
 });
 
 type HelpFormSchemaType = z.infer<typeof helpFormSchema>;
-type HelpFormResponse = { redirectUrl: string };
-type Inputs = {
-  username: string;
-  email: string;
-  content: string;
-};
-
-const postHelpForm = (input: Inputs): Promise<Result<HelpFormResponse>> => {
-  return fetch("api/help", {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json",
-    },
-    body: JSON.stringify(input),
-  })
-    .then((res) => handleFetchResolve<HelpFormResponse>(res))
-    .catch(handleFetchReject);
-};
-
 const HelpPage = () => {
   // use React Hook Form
   const {
