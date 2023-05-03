@@ -40,9 +40,9 @@ const StyledButton = styled.button`
 
 // creating a schema for strings
 const helpFormSchema = z.object({
-  username: z.string(),
+  username: z.string().nonempty({ message: "名前は必須です" }),
   email: z.string().email("メールアドレスの形が正しくありません"),
-  content: z.string(),
+  content: z.string().nonempty({ message: "質問内容は必須です" }),
 });
 
 type HelpFormSchemaType = z.infer<typeof helpFormSchema>;
@@ -103,7 +103,6 @@ const HelpPage = () => {
             />
           </label>
           {errors.username?.message && <FormErrorMessage />}
-          {console.log(errors)}
 
           <label htmlFor="email">
             <p>e-mail</p>
