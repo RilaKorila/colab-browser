@@ -42,7 +42,7 @@ const HelpPage = () => {
     formState: { errors },
   } = useForm<HelpFormInput>({
     // zodのスキーマを指定する
-    resolver: zodResolver(helpFormSchema),
+    // resolver: zodResolver(helpFormSchema),
   });
 
   return (
