@@ -15,5 +15,5 @@ export default function handler(
     return res.status(400).json({ data: "name not found" });
   }
 
-  res.status(200).json({ data: req.body.name });
+  res.status(200).json({ data: req.body.username });
 }
