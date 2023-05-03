@@ -1,7 +1,7 @@
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
+import { helpFormSchema, HelpFormSchemaType } from "../../src/libs/zod";
 import { Container, H2, MyHeader } from "../../components/Layout";
 import postHelpForm from "../../src/services/client/postHelpForm";
 import FormErrorMessage from "../../components/FormErrorMessage";
@@ -34,14 +34,6 @@ const StyledButton = styled.button`
   width: 100px;
 `;
 
-// creating a schema for strings
-const helpFormSchema = z.object({
-  username: z.string().nonempty({ message: "名前は必須です" }),
-  email: z.string().email("メールアドレスの形が正しくありません"),
-  content: z.string().nonempty({ message: "質問内容は必須です" }),
-});
-
-type HelpFormSchemaType = z.infer<typeof helpFormSchema>;
 const HelpPage = () => {
   // use React Hook Form
   const {
