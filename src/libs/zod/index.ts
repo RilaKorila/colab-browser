@@ -7,4 +7,4 @@ export const helpFormSchema = z.object({
   content: z.string().nonempty({ message: "質問内容は必須です" }),
 });
 
-export type HelpFormSchemaType = z.infer<typeof helpFormSchema>;
+export type HelpFormInput = z.infer<typeof helpFormSchema>;

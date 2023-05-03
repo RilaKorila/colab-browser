@@ -1,14 +1,12 @@
 import { Result } from "../../../types";
+import { HelpFormInput } from "../../libs/zod";
 import { handleFetchReject, handleFetchResolve } from "./apiRoutes";
 
 type HelpFormResponse = { redirectUrl: string };
-type Inputs = {
-  username: string;
-  email: string;
-  content: string;
-};
 
-const postHelpForm = (input: Inputs): Promise<Result<HelpFormResponse>> => {
+export const postHelpForm = (
+  input: HelpFormInput
+): Promise<Result<HelpFormResponse>> => {
   return fetch("api/help", {
     method: "POST",
     headers: {
@@ -19,5 +17,3 @@ const postHelpForm = (input: Inputs): Promise<Result<HelpFormResponse>> => {
     .then((res) => handleFetchResolve<HelpFormResponse>(res))
     .catch(handleFetchReject);
 };
-
-export default postHelpForm;

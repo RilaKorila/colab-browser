@@ -1,9 +1,9 @@
 import { MyHeader, H1, H2 } from "../../components/Layout";
 import { GetStaticProps, GetStaticPaths } from "next";
-import { Colab } from "../../interface";
+import { Colab } from "../../../interface";
 import Link from "next/link";
 import Image from "next/image";
-import { client } from "../../src/libs/client";
+import { client } from "../../libs/client";
 import styled from "styled-components";
 
 type Props = {

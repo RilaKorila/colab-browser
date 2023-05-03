@@ -2,12 +2,12 @@ import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { Container, H2 } from "../components/Layout";
 import styled from "styled-components";
-import { client } from "../src/libs/client";
-import CardGrid from "../components/CardGrid";
 import React from "react";
-import { Colab } from "../interface";
+import { Container, H2 } from "../components/Layout";
+import { client } from "../libs/client";
+import CardGrid from "../components/CardGrid";
+import { Colab } from "../../interface";
 
 // (TODO) Layoutを呼び出す + position, ul>li>>color のみ変更
 const StyledHeader = styled.div`

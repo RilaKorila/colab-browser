@@ -1,8 +1,8 @@
 import { GetStaticProps } from "next";
-import { Footer, Container, H2, MyHeader } from "../../components/Layout";
-import { Colab } from "../../interface";
+import { Container, H2, MyHeader } from "../../components/Layout";
+import { Colab } from "../../../interface";
 import CardGrid from "../../components/CardGrid";
-import { client } from "../../src/libs/client";
+import { client } from "../../libs/client";
 
 type Props = {
   items: Colab[];

@@ -1,9 +1,9 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
-import { helpFormSchema, HelpFormSchemaType } from "../../src/libs/zod";
+import { helpFormSchema, HelpFormInput } from "../../libs/zod/index";
 import { Container, H2, MyHeader } from "../../components/Layout";
-import postHelpForm from "../../src/services/client/postHelpForm";
+import { postHelpForm } from "../../services/client/postHelpForm";
 import FormErrorMessage from "../../components/FormErrorMessage";
 
 const StyledHelpForm = styled.form`
@@ -40,7 +40,7 @@ const HelpPage = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<HelpFormSchemaType>({
+  } = useForm<HelpFormInput>({
     // zodのスキーマを指定する
     resolver: zodResolver(helpFormSchema),
   });
