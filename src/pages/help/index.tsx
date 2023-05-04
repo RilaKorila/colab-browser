@@ -41,16 +41,13 @@ const schema = z.object({
   content: z.string(),
 });
 
-type TestFormFields = z.input<typeof schema>;
-type TestFormPayload = z.output<typeof schema>;
-
 const HelpPage = () => {
   // use React Hook Form
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<TestFormFields>({
+  } = useForm<HelpFormInput>({
     // zodのスキーマを指定する
     // 再帰が深くて型エラーが起こるが、対処しきれないため踏み潰した
     // @ts-ignore
