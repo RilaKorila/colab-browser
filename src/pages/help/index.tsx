@@ -36,9 +36,13 @@ const StyledButton = styled.button`
 `;
 
 const schema = z.object({
-  name: z.string().min(1, { message: "Required" }),
-  age: z.number().min(10),
+  username: z.string(),
+  email: z.string(),
+  content: z.string(),
 });
+
+type TestFormFields = z.input<typeof schema>;
+type TestFormPayload = z.output<typeof schema>;
 
 const HelpPage = () => {
   // use React Hook Form
@@ -46,10 +50,11 @@ const HelpPage = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<HelpFormInput>({
+  } = useForm<TestFormFields>({
     // zodのスキーマを指定する
+    // 再帰が深くて型エラーが起こるが、対処しきれないため踏み潰した
+    // @ts-ignore
     resolver: zodResolver(helpFormSchema),
-    // resolver: zodResolver(schema),
   });
 
   return (
@@ -59,37 +64,26 @@ const HelpPage = () => {
         <H2>お問い合わせ</H2>
         <StyledHelpForm
           // handleSubmitの引数の関数を実行する前に、resolverで指定したvalidationを実行
-          onSubmit={handleSubmit(
-            // (data) => console.log(data)
-            async (values) => {
-              const { data, err } = await postHelpForm(values);
+          onSubmit={handleSubmit(async (values) => {
+            const { data, err } = await postHelpForm(values);
 
-              if (err) {
-                console.error(err.message);
-                return;
-              }
-              console.log("Response: ", data);
+            if (err) {
+              console.error(err.message);
+              return;
             }
-          )}
+            console.log("Response: ", data);
+          })}
         >
           <label htmlFor="username">
             <p>名前</p>
             {/* zodのstateForm.errorsとregisterを用いたformを設置 */}
-            <StyledInput
-              type="text"
-              id="username"
-              {...register("username", { required: true })}
-            />
+            <StyledInput type="text" id="username" {...register("username")} />
           </label>
           {errors.username?.message && <FormErrorMessage />}
 
           <label htmlFor="email">
             <p>e-mail</p>
-            <StyledInput
-              type="email"
-              id="email"
-              {...register("email", { required: true })}
-            />
+            <StyledInput type="email" id="email" {...register("email")} />
           </label>
           {errors.email?.message && <FormErrorMessage />}
 
@@ -99,7 +93,7 @@ const HelpPage = () => {
               id="content"
               rows={8}
               cols={50}
-              {...register("content", { required: true })}
+              {...register("content")}
             ></StyledTextarea>
             {errors.content?.message && <FormErrorMessage />}
           </label>
