@@ -1,6 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
+import { z } from "zod";
 import FormErrorMessage from "../../components/FormErrorMessage";
 import { Container, H2, MyHeader } from "../../components/Layout";
 import { helpFormSchema, HelpFormInput } from "../../libs/zod/index";
@@ -34,6 +35,11 @@ const StyledButton = styled.button`
   width: 100px;
 `;
 
+const schema = z.object({
+  name: z.string().min(1, { message: "Required" }),
+  age: z.number().min(10),
+});
+
 const HelpPage = () => {
   // use React Hook Form
   const {
@@ -42,7 +48,8 @@ const HelpPage = () => {
     formState: { errors },
   } = useForm<HelpFormInput>({
     // zodのスキーマを指定する
-    // resolver: zodResolver(helpFormSchema),
+    resolver: zodResolver(helpFormSchema),
+    // resolver: zodResolver(schema),
   });
 
   return (
@@ -52,15 +59,18 @@ const HelpPage = () => {
         <H2>お問い合わせ</H2>
         <StyledHelpForm
           // handleSubmitの引数の関数を実行する前に、resolverで指定したvalidationを実行
-          onSubmit={handleSubmit(async (values) => {
-            const { data, err } = await postHelpForm(values);
+          onSubmit={handleSubmit(
+            // (data) => console.log(data)
+            async (values) => {
+              const { data, err } = await postHelpForm(values);
 
-            if (err) {
-              console.error(err.message);
-              return;
+              if (err) {
+                console.error(err.message);
+                return;
+              }
+              console.log("Response: ", data);
             }
-            console.log("Response: ", data);
-          })}
+          )}
         >
           <label htmlFor="username">
             <p>名前</p>

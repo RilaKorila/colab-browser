@@ -2,7 +2,7 @@ import { Result } from "../../../types";
 import { HelpFormInput } from "../../libs/zod";
 import { handleFetchReject, handleFetchResolve } from "./apiRoutes";
 
-type HelpFormResponse = { redirectUrl: string };
+export type HelpFormResponse = { redirectUrl: string };
 
 export const postHelpForm = (
   input: HelpFormInput
