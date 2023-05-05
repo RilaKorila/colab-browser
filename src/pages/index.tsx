@@ -4,9 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
-import { Colab } from "../../interface";
 import CardGrid from "../components/CardGrid";
 import { Container, H2 } from "../components/Layout";
+import { Colab } from "../interface";
 import { client } from "../libs/client";
 
 // (TODO) Layoutを呼び出す + position, ul>li>>color のみ変更

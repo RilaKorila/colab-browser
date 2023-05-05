@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Colab } from "../../interface";
+import { Colab } from "../interface";
 import Card from "./Card";
 
 type Props = {

@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
-import { Colab } from "../../../interface";
 import CardGrid from "../../components/CardGrid";
 import { Container, H2, MyHeader } from "../../components/Layout";
+import { Colab } from "../../interface";
 import { client } from "../../libs/client";
 
 type Props = {
