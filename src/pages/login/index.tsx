@@ -1,6 +1,4 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-// import { loginWithFirebase } from "libs/firebaseConfig";
-// import { GetServerSideProps } from "next";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import FormErrorMessage from "../../components/FormErrorMessage";
@@ -31,11 +29,7 @@ const StyledButton = styled.button`
   width: 100px;
 `;
 
-type Props = {
-  value: string;
-};
-
-const LoginPage = (props: Props) => {
+const LoginPage = () => {
   // use React Hook Form
   const {
     register,
@@ -53,7 +47,6 @@ const LoginPage = (props: Props) => {
       <MyHeader />
       <Container>
         <H2>ログイン</H2>
-        <p>{props.value}</p>
         <StyledHelpForm
           // handleSubmitの引数の関数を実行する前に、resolverで指定したvalidationを実行
           onSubmit={handleSubmit(async (values: LoginInput) => {
