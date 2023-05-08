@@ -1,5 +1,6 @@
 import { GetServerSideProps } from "next";
 import Link from "next/dist/client/link";
+import nookies from "nookies";
 import { MyHeader } from "../../components/Layout";
 import { loginWithFirebase } from "libs/firebaseConfig";
 
@@ -21,9 +22,15 @@ const Page = (props: Props) => {
     </>
   );
 };
-export const getServerSideProps: GetServerSideProps<Props> = async () => {
+export const getServerSideProps: GetServerSideProps<Props> = async ({
+  req,
+  res,
+}) => {
   const email = "murakami.ayana3@gmail.com";
-  const password = "Mooomin";
+  const password = "Mooomin03";
+
+  const cookies = nookies.get({ req });
+  console.log("cookies: ", cookies);
 
   const isAuthorized = await loginWithFirebase(email, password);
   console.log(isAuthorized);

@@ -1,4 +1,4 @@
-import { initializeApp } from "firebase/app";
+import { FirebaseApp, getApp, getApps, initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 // .envファイルで設定した環境変数をfirebaseConfigに入れる
@@ -11,13 +11,13 @@ const firebaseConfig = {
   appId: process.env.FIREBASE_APP_ID,
 };
 
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
 export const loginWithFirebase = (
   email: string,
   password: string
 ): Promise<boolean> => {
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-
   return signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Sign in
@@ -33,4 +33,8 @@ export const loginWithFirebase = (
 
       return false;
     });
+};
+
+export const getFirebaseApp = (): FirebaseApp => {
+  return !getApps().length ? app : getApp();
 };
