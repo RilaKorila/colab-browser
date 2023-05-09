@@ -1,6 +1,6 @@
 import { getAuth, getRedirectResult } from "firebase/auth";
 import { createContext, useState, useEffect, useContext } from "react";
-import { getFirebaseApp } from "libs/firebaseConfig";
+import { getFirebaseApp } from "libs/firebase/utils/init/firebaseConfig";
 
 /**
  * @see {@link https://firebase.google.com/docs/reference/js/v8/firebase.User#properties_1}<br>

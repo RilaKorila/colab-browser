@@ -1,7 +1,7 @@
 import { Result } from "../../../types";
 import { LoginInput } from "../../libs/zod";
 import { handleFetchReject, handleFetchResolve } from "./apiRoutes";
-import { loginWithFirebase } from "libs/firebaseConfig";
+import { loginWithFirebase } from "libs/firebase/firebaseSample";
 
 export type LoginResponse = { redirectUrl: string };
 
