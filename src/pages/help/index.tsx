@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { styled } from "styled-components";
+import styled from "styled-components";
 import { z } from "zod";
 import FormErrorMessage from "../../components/FormErrorMessage";
 import { Container, H2, MyHeader } from "../../components/Layout";

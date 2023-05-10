@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 import { Colab } from "../interface";
 import Card from "./Card";
 
