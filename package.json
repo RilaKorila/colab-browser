@@ -27,7 +27,6 @@
     "@babel/core": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
     "@types/styled-components": "^5.1.26",
-    "@zeit/next-typescript": "^1.1.1",
     "babel-plugin-styled-components": "^2.1.1",
     "eslint": "^8.40.0",
     "eslint-config-next": "^13.4.1",
