@@ -1,5 +1,5 @@
-import { FirebaseError } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+// import { FirebaseError } from "firebase/app";
+// import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { NextPage } from "next";
 import router from "next/router";
 import React from "react";
@@ -9,11 +9,11 @@ import { LoginInput } from "libs/zod";
 export const SignIn: React.FC<NextPage> = () => {
   const isValid = async (data: LoginInput) => {
     try {
-      const auth = getAuth();
-      await signInWithEmailAndPassword(auth, data.email, data.password);
+      // const auth = getAuth();
+      // await signInWithEmailAndPassword(auth, data.email, data.password);
       router.push("/");
     } catch (error) {
-      if (error instanceof FirebaseError) {
+      if (error /*instanceof FirebaseError*/) {
         console.log(error);
       }
     }

@@ -1,7 +1,7 @@
 import { GetServerSideProps } from "next";
 import Link from "next/dist/client/link";
 import { MyHeader } from "../../components/Layout";
-import { loginWithFirebase } from "libs/firebaseConfig";
+// import { loginWithFirebase } from "libs/firebaseConfig";
 
 type Props = {
   isAuthorized: boolean;
@@ -28,7 +28,8 @@ export const getServerSideProps: GetServerSideProps<Props> = async ({
   const email = "murakami.ayana3@gmail.com";
   const password = "Mooomin03";
 
-  const isAuthorized = await loginWithFirebase(email, password);
+  // const isAuthorized = await loginWithFirebase(email, password);
+  const isAuthorized = true;
   console.log(isAuthorized);
   return { props: { isAuthorized } };
 };

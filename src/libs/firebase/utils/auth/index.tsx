@@ -1,4 +1,4 @@
-import { getAuth, getRedirectResult } from "firebase/auth";
+// import { getAuth, getRedirectResult } from "firebase/auth";
 import { createContext, useState, useEffect, useContext } from "react";
 import { getFirebaseApp } from "libs/firebase/utils/init/firebaseConfig";
 
@@ -34,21 +34,21 @@ export const FirebaseAuthProvider = ({ children }: ReactNodeProps) => {
     undefined
   );
 
-  const firebaseApp = getFirebaseApp();
-  const auth = getAuth(firebaseApp);
+  // const firebaseApp = getFirebaseApp();
+  // const auth = getAuth(firebaseApp);
 
-  // authはnullの可能性があるので、useEffectの第二引数にauthを指定しておく
-  useEffect(() => {
-    const unsubscribed = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setCurrentUser(user);
-      }
-      getRedirectResult(getAuth(firebaseApp));
-    });
-    return () => {
-      unsubscribed();
-    };
-  }, [auth]);
+  // // authはnullの可能性があるので、useEffectの第二引数にauthを指定しておく
+  // useEffect(() => {
+  //   const unsubscribed = auth.onAuthStateChanged((user) => {
+  //     if (user) {
+  //       setCurrentUser(user);
+  //     }
+  //     getRedirectResult(getAuth(firebaseApp));
+  //   });
+  //   return () => {
+  //     unsubscribed();
+  //   };
+  // }, [auth]);
 
   return (
     <FirebaseAuthContext.Provider value={{ currentUser: currentUser }}>
