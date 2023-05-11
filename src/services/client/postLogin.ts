@@ -1,7 +1,7 @@
 import { Result } from "../../../types";
 import { LoginInput } from "../../libs/zod";
 import { handleFetchReject, handleFetchResolve } from "./apiRoutes";
-import { loginWithFirebase } from "libs/firebase/firebaseSample";
+// import { loginWithFirebase } from "libs/firebase/firebaseSample";
 
 export type LoginResponse = { redirectUrl: string };
 
@@ -10,8 +10,8 @@ export const postLogin = (
 ): Promise<Result<LoginResponse>> => {
   console.log("login");
 
-  loginWithFirebase(input.email, input.password);
-  console.log("before fetch");
+  // loginWithFirebase(input.email, input.password);
+  // console.log("before fetch");
 
   return (
     fetch("api/login", {
