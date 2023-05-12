@@ -84,6 +84,9 @@ function Home(allColab: { allColab: Colab[] }) {
             <li>
               <Link href="/help/">Help</Link>
             </li>
+            <li>
+              <Link href="/login2/">Login</Link>
+            </li>
           </ul>
         </StyledHeader>
         <h1>Let&apos;s Enjoy Computer Science !</h1>
