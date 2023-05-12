@@ -1,6 +1,6 @@
 import { GetServerSideProps } from "next";
 import Link from "next/dist/client/link";
-import { MyHeader } from "../../components/Layout";
+import { HeaderMenu } from "../../components/HeaderMenu";
 // import { loginWithFirebase } from "libs/firebaseConfig";
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
 const Page = (props: Props) => {
   return (
     <>
-      <MyHeader />
+      <HeaderMenu />
       {props.isAuthorized && <h1>Hello, You are author</h1>}
       {!props.isAuthorized && (
         <>

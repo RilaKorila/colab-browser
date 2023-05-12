@@ -2,9 +2,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import FormErrorMessage from "../../components/FormErrorMessage";
-import { Container, H2, MyHeader } from "../../components/Layout";
+import { Container, H2 } from "../../components/Layout";
 import { LoginInput, loginSchema } from "../../libs/zod/index";
 import { postLogin } from "../../services/client/postLogin";
+import { HeaderMenu } from "components/HomeHeader";
 
 const StyledHelpForm = styled.form`
   display: flex;
@@ -44,7 +45,7 @@ const LoginPage = () => {
 
   return (
     <>
-      <MyHeader />
+      <HeaderMenu />
       <Container>
         <H2>ログイン</H2>
         <StyledHelpForm

@@ -1,8 +1,9 @@
 import { GetStaticProps } from "next";
 import CardGrid from "../../components/CardGrid";
-import { Container, H2, MyHeader } from "../../components/Layout";
+import { Container, H2 } from "../../components/Layout";
 import { Colab } from "../../interface";
 import { client } from "../../libs/client";
+import { HeaderMenu } from "components/HomeHeader";
 
 type Props = {
   items: Colab[];
@@ -11,7 +12,7 @@ type Props = {
 const WithStaticProps = ({ items }: Props) => {
   return (
     <>
-      <MyHeader />
+      <HeaderMenu />
 
       <Container>
         <H2>気になるテーマからはじめてみよう！</H2>

@@ -1,36 +1,13 @@
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
 import CardGrid from "../components/CardGrid";
 import { Container, H2 } from "../components/Layout";
 import { Colab } from "../interface";
 import { client } from "../libs/client";
-
-// (TODO) Layoutを呼び出す + position, ul>li>>color のみ変更
-const StyledHeader = styled.div`
-  top: 0;
-  right: 0;
-  text-align: center;
-  background-color: transparent;
-  position: absolute;
-
-  > ul {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-
-    > li {
-      list-style: none;
-      font-size: 16px;
-      color: white;
-      opacity: 0.7;
-      padding: 10px 30px;
-    }
-  }
-`;
+import { HeaderMenu } from "components/HomeHeader";
 
 const Top = styled.div`
   padding: 180px 0 100px 0;
@@ -72,23 +49,7 @@ function Home(allColab: { allColab: Colab[] }) {
           src="/starry_sky.jpg"
           layout="fill"
         />
-        <StyledHeader>
-          <ul>
-            <li>
-              <Link href="/">Home</Link>
-            </li>
-            {/* <li>Search</li> */}
-            <li>
-              <Link href="/posts/">Library</Link>
-            </li>
-            <li>
-              <Link href="/help/">Help</Link>
-            </li>
-            <li>
-              <Link href="/login2/">Login</Link>
-            </li>
-          </ul>
-        </StyledHeader>
+        <HeaderMenu />
         <h1>Let&apos;s Enjoy Computer Science !</h1>
       </Top>
 

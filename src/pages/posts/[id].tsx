@@ -2,9 +2,10 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
-import { MyHeader, H1, H2 } from "../../components/Layout";
+import { H1, H2 } from "../../components/Layout";
 import { Colab } from "../../interface";
 import { client } from "../../libs/client";
+import { HeaderMenu } from "components/HomeHeader";
 
 type Props = {
   item?: Colab;
@@ -56,7 +57,7 @@ const StaticPropsDetail = ({ item, errors }: Props) => {
     const url = item === undefined ? "error" : item.url;
     return (
       <>
-        <MyHeader />
+        <HeaderMenu />
 
         <Contents>
           <H1>{item?.name}</H1>
