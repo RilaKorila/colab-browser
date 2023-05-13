@@ -3,7 +3,7 @@ import CardGrid from "../../components/CardGrid";
 import { Container, H2 } from "../../components/Layout";
 import { Colab } from "../../interface";
 import { client } from "../../libs/client";
-import { HeaderMenu } from "components/HomeHeader";
+import { HeaderMenu } from "components/HeaderMenu";
 
 type Props = {
   items: Colab[];

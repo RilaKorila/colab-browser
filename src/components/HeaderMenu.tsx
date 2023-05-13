@@ -1,11 +1,13 @@
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import styled from "styled-components";
+import { ProfileLink } from "./ProfileLink";
 
 const StyledHeader = styled.div`
   top: 0;
   right: 0;
   text-align: center;
-  background-color: transparent;
+  background-color: black;
   position: absolute;
 
   > ul {
@@ -17,7 +19,6 @@ const StyledHeader = styled.div`
       list-style: none;
       font-size: 16px;
       color: white;
-      opacity: 0.7;
       padding: 10px 30px;
     }
   }
@@ -30,6 +31,7 @@ const BaseHeader = styled.div`
 `;
 
 export const HeaderMenu = () => {
+  const { data: session } = useSession();
   return (
     <>
       <BaseHeader />
@@ -45,6 +47,17 @@ export const HeaderMenu = () => {
           <li>
             <Link href="/help/">Help</Link>
           </li>
+          {!session && (
+            <li>
+              <Link href="/login2/">Login</Link>
+            </li>
+          )}
+          {session && session.user?.image && (
+            <ProfileLink
+              name={session.user.name ? session.user.name : ""}
+              image={session.user.image ? session.user.image : null}
+            />
+          )}
         </ul>
       </StyledHeader>
     </>

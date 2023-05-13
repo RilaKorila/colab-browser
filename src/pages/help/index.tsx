@@ -6,7 +6,7 @@ import FormErrorMessage from "../../components/FormErrorMessage";
 import { Container, H2 } from "../../components/Layout";
 import { helpFormSchema, HelpFormInput } from "../../libs/zod/index";
 import { postHelpForm } from "../../services/client/postHelpForm";
-import { HeaderMenu } from "components/HomeHeader";
+import { HeaderMenu } from "components/HeaderMenu";
 
 const StyledHelpForm = styled.form`
   display: flex;

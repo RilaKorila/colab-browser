@@ -1,8 +1,8 @@
 import { GetServerSideProps, NextPage } from "next";
 import { getServerSession } from "next-auth";
-import { useSession, signOut } from "next-auth/react";
-
+import { signOut } from "next-auth/react";
 import Image from "next/image";
+import { HeaderMenu } from "components/HeaderMenu";
 import { authOptions } from "pages/api/auth/[...nextauth]";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -37,6 +37,7 @@ type Props = {
 const Page: NextPage<Props> = (props) => {
   return (
     <>
+      <HeaderMenu />
       <div>
         <h1>プロフィール</h1>
         <p>{props.name}</p>
