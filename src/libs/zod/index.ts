@@ -8,3 +8,10 @@ export const helpFormSchema = z.object({
 });
 
 export type HelpFormInput = z.infer<typeof helpFormSchema>;
+
+// loginに関するzod schema
+export const loginSchema = z.object({
+  email: z.string(),
+  password: z.string(),
+});
+export type LoginInput = z.infer<typeof loginSchema>;
