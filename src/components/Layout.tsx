@@ -31,3 +31,17 @@ export const H2 = styled.h2`
   letter-spacing: 2px;
   color: #444;
 `;
+
+export const StyledButton = styled.button`
+  background-color: black;
+  color: white;
+  height: 36px;
+  width: 96px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+
+  :hover {
+    opacity: 0.7;
+  }
+`;
