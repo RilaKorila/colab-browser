@@ -1,6 +1,8 @@
 import { NextPage } from "next";
 import { useSession, signIn, signOut } from "next-auth/react";
 import React from "react";
+import { HeaderMenu } from "components/HeaderMenu";
+import { Container, H2, StyledButton } from "components/Layout";
 
 const Login: NextPage = () => {
   // sessionには、以下のような値が入っている。
@@ -16,25 +18,28 @@ const Login: NextPage = () => {
 
   return (
     <>
-      {
-        // セッションがある場合、ログアウトを表示
-        session && (
-          <div>
-            <h1>ようこそ, {session.user && session.user.email}</h1>
-            <button onClick={() => signOut()}>ログアウト</button>
-          </div>
-        )
-      }
-      {
-        // セッションがない場合、ログインを表示
-        // ログインボタンを押すと、ログインページに遷移する
-        !session && (
-          <div>
-            <p>ログインしていません</p>
-            <button onClick={() => signIn()}>ログイン</button>
-          </div>
-        )
-      }
+      <HeaderMenu />
+      <Container>
+        {
+          // セッションがある場合、ログアウトを表示
+          session && (
+            <div>
+              <H2>ようこそ, {session.user && session.user.email}さん</H2>
+              <StyledButton onClick={() => signOut()}>ログアウト</StyledButton>
+            </div>
+          )
+        }
+        {
+          // セッションがない場合、ログインを表示
+          // ログインボタンを押すと、ログインページに遷移する
+          !session && (
+            <div>
+              <H2>ログインしていません</H2>
+              <StyledButton onClick={() => signIn()}>ログイン</StyledButton>
+            </div>
+          )
+        }
+      </Container>
     </>
   );
 };
