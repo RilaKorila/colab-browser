@@ -3,12 +3,13 @@ import { NextPage } from "next";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
 import FormErrorMessage from "../../components/FormErrorMessage";
+import { StyledButton, StyledInput } from "components/FormLayout";
 import { HeaderMenu } from "components/HeaderMenu";
 import { Container, H2 } from "components/Layout";
 import { TeacherPageInput, teacherPageSchema } from "libs/zod";
 import { postColabUrl } from "services/client/postColabUrl";
 
-const StyledHelpForm = styled.form`
+const StyledTeacherForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,17 +23,6 @@ const StyledHelpForm = styled.form`
       font-size: 24px;
     }
   }
-`;
-
-const StyledInput = styled.input`
-  margin: 10px;
-  resize: none;
-`;
-
-const StyledButton = styled.button`
-  display: block;
-  margin-top: 20px;
-  width: 100px;
 `;
 
 const Warning = styled.p`
@@ -59,7 +49,7 @@ const Page: NextPage = () => {
       <Container>
         <H2>リンク追加ページ</H2>
 
-        <StyledHelpForm
+        <StyledTeacherForm
           // handleSubmitの引数の関数を実行する前に、resolverで指定したvalidationを実行
           onSubmit={handleSubmit(async (values) => {
             const { data, err } = await postColabUrl(values);
@@ -94,7 +84,7 @@ const Page: NextPage = () => {
           <Warning>
             ※ 送信前にColaboratory Notebookの公開設定を必ずご確認ください
           </Warning>
-        </StyledHelpForm>
+        </StyledTeacherForm>
       </Container>
     </>
   );
