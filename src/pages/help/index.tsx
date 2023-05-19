@@ -1,46 +1,16 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import styled from "styled-components";
-import { z } from "zod";
 import FormErrorMessage from "../../components/FormErrorMessage";
 import { Container, H2 } from "../../components/Layout";
 import { helpFormSchema, HelpFormInput } from "../../libs/zod/index";
 import { postHelpForm } from "../../services/client/postHelpForm";
+import {
+  StyledForm,
+  StyledButton,
+  StyledTextarea,
+  StyledInput,
+} from "components/FormLayout";
 import { HeaderMenu } from "components/HeaderMenu";
-
-const StyledHelpForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  > label {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-`;
-
-const StyledTextarea = styled.textarea`
-  margin: 10px;
-  resize: none;
-`;
-
-const StyledInput = styled.input`
-  margin: 10px;
-  resize: none;
-`;
-
-const StyledButton = styled.button`
-  display: block;
-  margin-top: 20px;
-  width: 100px;
-`;
-
-const schema = z.object({
-  username: z.string(),
-  email: z.string(),
-  content: z.string(),
-});
 
 const HelpPage = () => {
   // use React Hook Form
@@ -60,7 +30,7 @@ const HelpPage = () => {
       <HeaderMenu />
       <Container>
         <H2>お問い合わせ</H2>
-        <StyledHelpForm
+        <StyledForm
           // handleSubmitの引数の関数を実行する前に、resolverで指定したvalidationを実行
           onSubmit={handleSubmit(async (values) => {
             const { data, err } = await postHelpForm(values);
@@ -96,7 +66,7 @@ const HelpPage = () => {
             {errors.content?.message && <FormErrorMessage />}
           </label>
           <StyledButton>送信</StyledButton>
-        </StyledHelpForm>
+        </StyledForm>
       </Container>
     </>
   );

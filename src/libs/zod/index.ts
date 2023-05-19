@@ -15,3 +15,11 @@ export const loginSchema = z.object({
   password: z.string(),
 });
 export type LoginInput = z.infer<typeof loginSchema>;
+
+// teacherページに関するzod schema
+export const teacherPageSchema = z.object({
+  author: z.string(),
+  title: z.string(),
+  url: z.string(),
+});
+export type TeacherPageInput = z.infer<typeof teacherPageSchema>;
